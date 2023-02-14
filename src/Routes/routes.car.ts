@@ -19,4 +19,11 @@ routesCar.get(
   (req: Request, res: Response, next: NextFunction) => new CarController(req, res, next).findById(),
 );
 
+routesCar.put(
+  '/:id',
+  validateID,
+  existsCar,
+  (req: Request, res: Response, next: NextFunction) => new CarController(req, res, next).update(),
+);
+
 export default routesCar;
