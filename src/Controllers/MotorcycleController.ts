@@ -29,20 +29,20 @@ class MotorcycleController {
     }
   }
 
-  // public async findAll() {
-  //   const Motorcycles = await this.service.findAll();
-  //   return this.res.status(200).json(Motorcycles);
-  // }
+  public async findAll() {
+    const motos = await this.service.findAll();
+    return this.res.status(200).json(motos);
+  }
 
-  // public async findById() {
-  //   const { id } = this.req.params;
-  //   try {
-  //     const Motorcycle = await this.service.findById(id);
-  //     return this.res.status(200).json(Motorcycle);
-  //   } catch (error) {
-  //     this.next(error);
-  //   }
-  // }
+  public async findById() {
+    const { id } = this.req.params;
+    try {
+      const moto = await this.service.findById(id);
+      return this.res.status(200).json(moto);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 
   // public async update() {
   //   const { id } = this.req.params;

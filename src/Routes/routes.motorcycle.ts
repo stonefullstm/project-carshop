@@ -1,5 +1,6 @@
 import { NextFunction, Router, Request, Response } from 'express';
 import MotorcycleController from '../Controllers/MotorcycleController';
+import { existsMotorcycle, validateID } from '../Middlewares/validations';
 
 const routesMotorcycle = Router();
 
@@ -11,16 +12,24 @@ routesMotorcycle.post(
     next: NextFunction,
   ) => new MotorcycleController(req, res, next).create(),
 );
-// routesMotorcycle.get(
-//   '/',
-//   (req: Request, res: Response, next: NextFunction) => new MotorcycleController(req, res, next).findAll(),
-// );
-// routesMotorcycle.get(
-//   '/:id',
-//   validateID,
-//   existsMotorcycle,
-//   (req: Request, res: Response, next: NextFunction) => new MotorcycleController(req, res, next).findById(),
-// );
+routesMotorcycle.get(
+  '/',
+  (
+    req: Request, 
+    res: Response, 
+    next: NextFunction,
+  ) => new MotorcycleController(req, res, next).findAll(),
+);
+routesMotorcycle.get(
+  '/:id',
+  validateID,
+  existsMotorcycle,
+  (
+    req: Request, 
+    res: Response, 
+    next: NextFunction,
+  ) => new MotorcycleController(req, res, next).findById(),
+);
 
 // routesMotorcycle.put(
 //   '/:id',

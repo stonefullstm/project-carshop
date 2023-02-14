@@ -16,17 +16,17 @@ class MotorcycleService {
     return this.createMotorcycleDomain(newMoto);
   }
 
-  // public async findAll(): Promise<(Car | null)[]> {
-  //   const carODM = new CarODM();
-  //   const cars = await carODM.findAll();
-  //   return cars.map((car) => this.createCarDomain(car));
-  // }
+  public async findAll(): Promise<(Motorcycle | null)[]> {
+    const motorcycleODM = new MotorcycleODM();
+    const motos = await motorcycleODM.findAll();
+    return motos.map((moto) => this.createMotorcycleDomain(moto));
+  }
 
-  // public async findById(id: string): Promise<Car | null> {
-  //   const carODM = new CarODM();
-  //   const car = await carODM.findById(id);
-  //   return this.createCarDomain(car);
-  // }
+  public async findById(id: string): Promise<Motorcycle | null> {
+    const motorcycleODM = new MotorcycleODM();
+    const moto = await motorcycleODM.findById(id);
+    return this.createMotorcycleDomain(moto);
+  }
 
   // public async update(id: string, car: ICar): Promise<Car | null> {
   //   const carODM = new CarODM();
